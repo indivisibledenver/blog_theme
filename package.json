@@ -1,4 +1,7 @@
 {
   "name": "indivisibledenver",
-  "version": "0.1.0"
+  "version": "0.1.0",
+  "devDependencies": {
+    "gulp": "github:gulpjs/gulp#4.0"
+  }
 }
