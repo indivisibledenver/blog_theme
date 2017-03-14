@@ -22,7 +22,7 @@ const warningBanner = `/********************************************************
 
 `;
 
-gulp.task('javascripts', function () {
+gulp.task('build:javascripts', function () {
   const bundler = browserify('./assets/javascripts/scripts.js')
     .transform(babelify, { presets: ["es2015"], sourceMaps: true });
 
@@ -36,7 +36,12 @@ gulp.task('javascripts', function () {
     .pipe(gulp.dest('./assets'))
 })
 
-gulp.task('stylesheets', function () {
+gulp.task('watch:javascripts', function (cb) {
+  gulp.watch('./assets/javascripts/**/*', gulp.series('build:javascripts'));
+  cb();
+})
+
+gulp.task('build:stylesheets', function () {
   const sassOptions = {
     includePaths: []
       .concat(require('bourbon').includePaths)
@@ -51,8 +56,21 @@ gulp.task('stylesheets', function () {
     .pipe(gulp.dest('./assets'))
 });
 
-gulp.task('build', gulp.parallel('javascripts', 'stylesheets'));
-
-gulp.task('serve', function () {
-  spawn('node', ['../../../index.js'], {stdio: 'inherit'});
+gulp.task('watch:stylesheets', function (cb) {
+  gulp.watch('./assets/stylesheets/**/*', gulp.series('build:stylesheets'));
+  cb();
 });
+
+gulp.task('build:assets', gulp.parallel('build:javascripts', 'build:stylesheets'));
+
+gulp.task('watch:assets', gulp.parallel('watch:javascripts', 'watch:stylesheets'));
+
+gulp.task('serve', gulp.series(
+  'build:assets',
+  gulp.parallel(
+    'watch:assets',
+    function () {
+      spawn('node', ['../../../index.js'], {stdio: 'inherit'});
+    }
+  )
+));
