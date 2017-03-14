@@ -22,7 +22,7 @@ const warningBanner = `/********************************************************
 
 `;
 
-gulp.task('build:javascripts', function () {
+function buildJavascripts() {
   const bundler = browserify('./assets/javascripts/scripts.js')
     .transform(babelify, { presets: ["es2015"], sourceMaps: true });
 
@@ -34,14 +34,13 @@ gulp.task('build:javascripts', function () {
     .pipe(gulpInsert.prepend(warningBanner))
     .pipe(gulpSourcemaps.write('./'))
     .pipe(gulp.dest('./assets'))
-})
+}
 
-gulp.task('watch:javascripts', function (cb) {
-  gulp.watch('./assets/javascripts/**/*', gulp.series('build:javascripts'));
-  cb();
-})
+function watchJavascripts() {
+  gulp.watch('./assets/javascripts/**/*', buildJavascripts);
+}
 
-gulp.task('build:stylesheets', function () {
+function buildStylesheets() {
   const sassOptions = {
     includePaths: []
       .concat(require('bourbon').includePaths)
@@ -54,22 +53,21 @@ gulp.task('build:stylesheets', function () {
     .pipe(gulpInsert.prepend(warningBanner))
     .pipe(gulpSourcemaps.write('./'))
     .pipe(gulp.dest('./assets'))
-});
+}
 
-gulp.task('watch:stylesheets', function (cb) {
-  gulp.watch('./assets/stylesheets/**/*', gulp.series('build:stylesheets'));
-  cb();
-});
+function watchStylesheets() {
+  gulp.watch('./assets/stylesheets/**/*', gulp.series(buildStylesheets));
+}
 
-gulp.task('build:assets', gulp.parallel('build:javascripts', 'build:stylesheets'));
+const buildAssets = gulp.parallel(buildJavascripts, buildStylesheets);
 
-gulp.task('watch:assets', gulp.parallel('watch:javascripts', 'watch:stylesheets'));
+const watchAssets = gulp.parallel(watchJavascripts, watchStylesheets);
 
 gulp.task('serve', gulp.series(
-  'build:assets',
+  buildAssets,
   gulp.parallel(
-    'watch:assets',
-    function () {
+    watchAssets,
+    function runServer() {
       spawn('node', ['../../../index.js'], {stdio: 'inherit'});
     }
   )
