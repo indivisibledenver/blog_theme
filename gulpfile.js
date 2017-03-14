@@ -3,7 +3,13 @@
 const gulp = require('gulp'),
       gulpInsert = require('gulp-insert'),
       gulpSass = require('gulp-sass'),
-      gulpSourcemaps = require('gulp-sourcemaps');
+      gulpSourcemaps = require('gulp-sourcemaps'),
+      vinylBuffer = require('vinyl-buffer'),
+      vinylSourceStream = require('vinyl-source-stream');
+
+const browserify = require('browserify'),
+      watchify = require('watchify'),
+      babelify = require('babelify');
 
 const spawn = require('child_process').spawn;
 
@@ -15,6 +21,20 @@ const warningBanner = `/********************************************************
 *******************************************************************************/
 
 `;
+
+gulp.task('javascripts', function () {
+  const bundler = browserify('./assets/javascripts/scripts.js')
+    .transform(babelify, { presets: ["es2015"], sourceMaps: true });
+
+  return bundler.bundle()
+    .on('error', function (error) { console.error(error); this.emit('end'); })
+    .pipe(vinylSourceStream('scripts.js'))
+    .pipe(vinylBuffer())
+    .pipe(gulpSourcemaps.init({ loadMaps: true }))
+    .pipe(gulpInsert.prepend(warningBanner))
+    .pipe(gulpSourcemaps.write('./'))
+    .pipe(gulp.dest('./assets'))
+})
 
 gulp.task('stylesheets', function () {
   const sassOptions = {
@@ -31,7 +51,7 @@ gulp.task('stylesheets', function () {
     .pipe(gulp.dest('./assets'))
 });
 
-gulp.task('build', gulp.parallel('stylesheets'));
+gulp.task('build', gulp.parallel('javascripts', 'stylesheets'));
 
 gulp.task('serve', function () {
   spawn('node', ['../../../index.js'], {stdio: 'inherit'});
