@@ -1,0 +1,11 @@
+<nav id="nav">
+
+  <img src="{{@blog.logo}}" width="350px" height="117px" alt=""/>
+
+  <ul>
+    {{#foreach navigation}}
+    <li><a href="{{url absolute="true"}}" {{#if current}}class="active"{{/if}}>{{label}}</a></li>
+    {{/foreach}}
+  </ul>
+
+</nav>

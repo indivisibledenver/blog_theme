@@ -1,3 +1,29 @@
 {{!< default}}
 
-<h1>Index</h1>
+{{#foreach posts}}
+<section class="main {{post_class}}">
+  <div class="spotlight">
+    <div class="content">
+
+      <header class="major">
+        <h2><a href="{{url}}">{{title}}</a></h2>
+        <h3><time datetime="{{date format="YYYY-MM-DD"}}">{{date format="DD MMMM YYYY"}}</time></h3>
+      </header>
+
+      <!-- <p>{{excerpt}} <a class="read-more" href="{{url}}">&raquo;</a></p> -->
+      {{content words="50"}}
+      <a class="read-more" href="{{url}}">&raquo;</a>
+
+      <footer>
+          {{tags}}
+      </footer>
+    </div>
+
+    {{#if image}}
+    <span class="image"><img src="{{image}}" alt="{{title}}" /></span>
+    {{/if}}
+  </div>
+</section>
+{{/foreach}}
+
+{{pagination}}

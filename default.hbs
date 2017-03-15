@@ -17,16 +17,59 @@
     <link rel="shortcut icon" href="{{asset "favicon.ico"}}">
 
     {{!-- Styles'n'Scripts --}}
-    <link rel="stylesheet" type="text/css" href="{{asset "styles.css"}}" />
+    <!-- <link rel="stylesheet" type="text/css" href="{{asset "styles.css"}}" /> -->
+		<link rel="stylesheet" href="{{asset "css/main.css"}}" />
 
     {{!-- Ghost outputs important style and meta data with this tag --}}
     {{ghost_head}}
   </head>
   <body>
 
-    {{{body}}}
+		<!-- Wrapper -->
+		<div id="wrapper">
 
-    <script src="{{asset "scripts.js"}}" charset="utf-8"></script>
+			<!-- Header
+			<header id="header" class="alt"></header>-->
+
+			<!-- Nav -->
+      {{navigation}}
+
+      <!-- Main -->
+      <div id="main">
+
+        {{{body}}}
+
+        {{! TODO: move to real footer }}
+        <section class="main special">
+          <footer class="major">
+            <ul class="actions">
+              <li><a href="https://www.indivisibleguide.com/download-the-guide" class="button special">Download the Indivisible Guide</a></li>
+              <li><a href="{{facebook_url @blog.facebook}}" class="button">Connect on Facebook</a></li>
+              <li><a href="{{twitter_url @blog.twitter}}" class="button">Connect on Twitter</a></li>
+            </ul>
+          </footer>
+        </section>
+      </div>
+
+
+      <!-- Footer -->
+      <footer id="footer">
+
+      </footer>
+
+    </div>
+
+		<!-- Scripts -->
+    {{! TODO: replace with assets }}
+    <!-- <script src="{{asset "scripts.js"}}" charset="utf-8"></script> -->
+		<script src="{{asset "js/jquery.min.js"}}"></script>
+		<script src="{{asset "js/jquery.scrollex.min.js"}}"></script>
+		<script src="{{asset "js/jquery.scrolly.min.js"}}"></script>
+		<script src="{{asset "js/skel.min.js"}}"></script>
+		<script src="{{asset "js/util.js"}}"></script>
+		<!--[if lte IE 8]><script src="{{asset "js/ie/respond.min.js"}}"></script><![endif]-->
+    <script src="{{asset "js/main.js"}}"></script>
+
     {{ghost_foot}}
   </body>
 </html>
