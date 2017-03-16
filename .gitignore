@@ -1,4 +1,4 @@
 node_modules
 
-assets/scripts.*
-assets/styles.*
+assets/vendor.*
+assets/main.*
