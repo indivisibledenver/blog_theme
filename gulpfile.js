@@ -2,7 +2,8 @@
 
 const gulp = require('gulp'),
       gulpConcat = require('gulp-concat'),
-      gulpInsert = require('gulp-insert');
+      gulpInsert = require('gulp-insert'),
+      gulpSass = require('gulp-sass');
 
 const spawn = require('child_process').spawn;
 
@@ -28,7 +29,11 @@ const warningBanner = `/********************************************************
 `;
 
 function buildScripts() {
-  return Promise.resolve();
+  return gulp.src(config.jsPaths)
+    .pipe(gulpConcat('main.js'))
+    .pipe(gulpInsert.prepend(warningBanner))
+    .pipe(gulp.dest('./assets/'));
+
 }
 
 function watchScripts() {
@@ -36,10 +41,17 @@ function watchScripts() {
 }
 
 function buildStyles() {
-  return gulp.src(config.jsPaths)
-    .pipe(gulpConcat('main.js'))
+  const sassOptions = {
+    includePaths: [],
+    outputStyle: 'expanded',
+  };
+
+  return gulp.src('./assets/css/main.{sass,scss}')
+    // .pipe(gulpSourcemaps.init())
+    .pipe(gulpSass(sassOptions).on('error', gulpSass.logError))
     .pipe(gulpInsert.prepend(warningBanner))
-    .pipe(gulp.dest('./assets/'));
+    // .pipe(gulpSourcemaps.write('./'))
+    .pipe(gulp.dest('./assets'))
 }
 
 function watchStyles() {

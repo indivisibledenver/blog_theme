@@ -5,6 +5,7 @@
     "gulp": "github:gulpjs/gulp#4.0",
     "gulp-concat": "^2.6.1",
     "gulp-insert": "^0.5.0",
+    "gulp-sass": "^3.1.0",
     "jquery": "^3.1.1",
     "jquery.scrollex": "^0.2.1",
     "skel-framework": "github:ajlkn/skel#v3.0.1"

@@ -1,0 +1,225 @@
+/* Form */
+
+form {
+  margin: 0 0 2em 0;
+}
+
+label {
+  display: block;
+  font-size: 0.9em;
+  font-weight: 400;
+  margin: 0 0 1em 0;
+}
+
+input[type="text"],
+input[type="password"],
+input[type="email"],
+select,
+textarea {
+  -moz-appearance: none;
+  -webkit-appearance: none;
+  -ms-appearance: none;
+  appearance: none;
+  border-radius: 8px;
+  border: solid 1px;
+  color: inherit;
+  display: block;
+  outline: 0;
+  padding: 0 1em;
+  text-decoration: none;
+  width: 100%;
+
+  &:invalid {
+    box-shadow: none;
+  }
+}
+
+.select-wrapper {
+  text-decoration: none;
+  display: block;
+  position: relative;
+
+  &:before {
+    -moz-osx-font-smoothing: grayscale;
+    -webkit-font-smoothing: antialiased;
+    font-family: FontAwesome;
+    font-style: normal;
+    font-weight: normal;
+    text-transform: none !important;
+  }
+
+  &:before {
+    content: '\f078';
+    display: block;
+    height: 2.75em;
+    line-height: 2.75em;
+    pointer-events: none;
+    position: absolute;
+    right: 0;
+    text-align: center;
+    top: 0;
+    width: 2.75em;
+  }
+
+  & select::-ms-expand {
+    display: none;
+  }
+}
+
+input[type="text"],
+input[type="password"],
+input[type="email"],
+select {
+  height: 2.75em;
+}
+
+textarea {
+  padding: 0.75em 1em;
+}
+
+input[type="checkbox"],
+input[type="radio"] {
+  -moz-appearance: none;
+  -webkit-appearance: none;
+  -ms-appearance: none;
+  appearance: none;
+  display: block;
+  float: left;
+  margin-right: -2em;
+  opacity: 0;
+  width: 1em;
+  z-index: -1;
+
+  & + label {
+    text-decoration: none;
+    cursor: pointer;
+    display: inline-block;
+    font-size: 1em;
+    font-weight: 300;
+    padding-left: 2.4em;
+    padding-right: 0.75em;
+    position: relative;
+
+    &:before {
+      -moz-osx-font-smoothing: grayscale;
+      -webkit-font-smoothing: antialiased;
+      font-family: FontAwesome;
+      font-style: normal;
+      font-weight: normal;
+      text-transform: none !important;
+    }
+
+    &:before {
+      border-radius: 8px;
+      border: solid 1px;
+      content: '';
+      display: inline-block;
+      height: 1.65em;
+      left: 0;
+      line-height: 1.58125em;
+      position: absolute;
+      text-align: center;
+      top: 0;
+      width: 1.65em;
+    }
+
+  }
+
+  &:checked + label:before {
+    content: '\f00c';
+  }
+}
+
+input[type="checkbox"] + label:before {
+  border-radius: 8px;
+}
+
+input[type="radio"] + label:before {
+  border-radius: 100%;
+}
+
+::-webkit-input-placeholder {
+  opacity: 1.0;
+}
+
+:-moz-placeholder {
+  opacity: 1.0;
+}
+
+::-moz-placeholder {
+  opacity: 1.0;
+}
+
+:-ms-input-placeholder {
+  opacity: 1.0;
+}
+
+.formerize-placeholder {
+  opacity: 1.0;
+}
+
+label {
+  color: #ffffff;
+}
+
+input[type="text"],
+input[type="password"],
+input[type="email"],
+select,
+textarea {
+  background: rgba(255, 255, 255, 0.075);
+  border-color: rgba(255, 255, 255, 0.35);
+
+  &:focus {
+    border-color: #8cc9f0;
+    box-shadow: 0 0 0 1px #8cc9f0;
+  }
+}
+
+.select-wrapper:before {
+  color: rgba(255, 255, 255, 0.35);
+}
+
+input[type="checkbox"] + label,
+input[type="radio"] + label {
+  color: rgba(255, 255, 255, 0.65);
+}
+
+input[type="checkbox"],
+input[type="radio"] {
+  & + label:before {
+    background: rgba(255, 255, 255, 0.075);
+    border-color: rgba(255, 255, 255, 0.35);
+  }
+
+  &:checked + label:before {
+    background-color: #ffffff;
+    border-color: #ffffff;
+    color: #935d8c;
+  }
+
+  &:focus + label:before {
+    border-color: #8cc9f0;
+    box-shadow: 0 0 0 1px #8cc9f0;
+  }
+}
+
+::-webkit-input-placeholder {
+  color: rgba(255, 255, 255, 0.5) !important;
+}
+
+:-moz-placeholder {
+  color: rgba(255, 255, 255, 0.5) !important;
+}
+
+::-moz-placeholder {
+  color: rgba(255, 255, 255, 0.5) !important;
+}
+
+:-ms-input-placeholder {
+  color: rgba(255, 255, 255, 0.5) !important;
+}
+
+.formerize-placeholder {
+  color: rgba(255, 255, 255, 0.5) !important;
+}

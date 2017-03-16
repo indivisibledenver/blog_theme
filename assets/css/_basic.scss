@@ -1,0 +1,36 @@
+/* Basic */
+
+@-ms-viewport {
+  width: device-width;
+}
+
+body {
+  -ms-overflow-style: scrollbar;
+}
+
+@media screen and (max-width: 480px) {
+
+  html, body {
+    min-width: 320px;
+  }
+
+}
+
+body {
+  background-color: #B20000;
+  background-image: url("images/overlay.png"), -moz-linear-gradient(45deg, #1D173C 15%, #C20939 85%);
+  background-image: url("images/overlay.png"), -webkit-linear-gradient(45deg, #1D173C 15%, #C20939 85%);
+  background-image: url("images/overlay.png"), -ms-linear-gradient(45deg, #1D173C 15%, #C20939 85%);
+  background-image: url("images/overlay.png"), linear-gradient(45deg, #1D173C 15%, #C20939 85%);
+
+  &.is-loading *, &.is-loading *:before, &.is-loading *:after {
+    -moz-animation: none !important;
+    -webkit-animation: none !important;
+    -ms-animation: none !important;
+    animation: none !important;
+    -moz-transition: none !important;
+    -webkit-transition: none !important;
+    -ms-transition: none !important;
+    transition: none !important;
+  }
+}

@@ -1,0 +1,74 @@
+/* Section/Article */
+
+section.special, article.special {
+  text-align: center;
+}
+
+header.major {
+  margin-bottom: 3em;
+
+  h2 {
+    font-size: 2em;
+
+    &:after {
+      display: block;
+      content: '';
+      width: 3.25em;
+      height: 2px;
+      margin: 0.7em 0 1em 0;
+      border-radius: 2px;
+
+      section.special &, article.special & {
+        margin-left: auto;
+        margin-right: auto;
+      }
+    }
+  }
+
+  p {
+    font-size: 1.25em;
+    letter-spacing: -0.025em;
+  }
+
+  &.special {
+    text-align: center;
+
+    h2:after {
+      margin-left: auto;
+      margin-right: auto;
+    }
+  }
+}
+
+footer.major {
+  margin-top: 3em;
+}
+
+@media screen and (max-width: 736px) {
+
+  header.major {
+    margin-bottom: 0;
+
+    h2 {
+      font-size: 1.5em;
+    }
+
+    p {
+      font-size: 1em;
+      letter-spacing: 0;
+
+      br {
+        display: none;
+      }
+    }
+  }
+
+  footer.major {
+    margin-top: 0;
+  }
+
+}
+
+header.major h2:after {
+  background-color: rgba(255, 255, 255, 0.35);
+}

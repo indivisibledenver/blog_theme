@@ -1,0 +1,123 @@
+/* Icon */
+
+.icon {
+  text-decoration: none;
+  -moz-transition: background-color 0.2s ease-in-out, color 0.2s ease-in-out;
+  -webkit-transition: background-color 0.2s ease-in-out, color 0.2s ease-in-out;
+  -ms-transition: background-color 0.2s ease-in-out, color 0.2s ease-in-out;
+  transition: background-color 0.2s ease-in-out, color 0.2s ease-in-out;
+  border-bottom: none;
+  position: relative;
+
+  &:before {
+    -moz-osx-font-smoothing: grayscale;
+    -webkit-font-smoothing: antialiased;
+    font-family: FontAwesome;
+    font-style: normal;
+    font-weight: normal;
+    text-transform: none !important;
+  }
+
+  & > .label {
+    display: none;
+  }
+
+  &.major {
+    border: solid 1px;
+    display: inline-block;
+    border-radius: 100%;
+    padding: 0.65em;
+    margin: 0 0 2em 0;
+    cursor: default;
+
+    &:before {
+      display: inline-block;
+      font-size: 6.25rem;
+      width: 2.25em;
+      height: 2.25em;
+      line-height: 2.2em;
+      border-radius: 100%;
+      border: solid 1px;
+      text-align: center;
+    }
+  }
+
+  &.alt {
+    display: inline-block;
+    border: solid 1px;
+    border-radius: 100%;
+
+    &:before {
+      display: block;
+      font-size: 1.25em;
+      width: 2em;
+      height: 2em;
+      text-align: center;
+      line-height: 2em;
+    }
+  }
+
+  &.style1 {
+    color: #efa8b0;
+  }
+
+  &.style2 {
+    color: #c79cc8;
+  }
+
+  &.style3 {
+    color: #a89cc8;
+  }
+
+  &.style4 {
+    color: #9bb2e1;
+  }
+
+  &.style5 {
+    color: #8cc9f0;
+  }
+
+  &.major {
+    @media screen and (max-width: 1680px) {
+      &:before {
+        font-size: 5.5rem;
+      }
+    }
+
+    @media screen and (max-width: 1280px) {
+      &:before {
+        font-size: 4.75rem;
+      }
+    }
+
+    @media screen and (max-width: 736px) {
+      margin: 0 0 1.5em 0;
+      padding: 0.35em;
+
+      &:before {
+        font-size: 3.5rem;
+      }
+    }
+  }
+
+  &.major {
+    border-color: rgba(255, 255, 255, 0.35);
+
+    &:before {
+      border-color: rgba(255, 255, 255, 0.35);
+    }
+  }
+
+  &.alt {
+    border-color: rgba(255, 255, 255, 0.35);
+    color: #ffffff;
+
+    &:hover {
+      background-color: rgba(255, 255, 255, 0.075);
+    }
+
+    &:active {
+      background-color: rgba(255, 255, 255, 0.2);
+    }
+  }
+}
