@@ -8,10 +8,11 @@ const spawn = require('child_process').spawn;
 
 const config = {
   jsPaths: [
-    './assets/js/jquery.min.js',
-    './assets/js/jquery.scrollex.min.js',
-    './assets/js/jquery.scrolly.min.js',
-    './assets/js/skel.min.js',
+    './node_modules/jquery/dist/jquery.min.js',
+    './node_modules/jquery.scrollex/jquery.scrollex.min.js',
+    './assets/js/vendor/jquery.scrolly.min.js',
+    './node_modules/skel-framework/dist/skel.min.js',
+
     './assets/js/util.js',
     './assets/js/main.js',
   ]
